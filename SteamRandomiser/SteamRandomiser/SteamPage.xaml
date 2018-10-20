@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SteamRandomiser.SteamPage"
+             Title="Steam Game Randomiser">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="#404040" />
+            </Style>
+            <Style x:Key="fieldStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+            </Style>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="5,0,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Grid BackgroundColor="#545454" Padding="10, 10, 10, 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Steam User Details"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   HorizontalOptions="Center"
+                   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+
+            <Label x:Name="steamIdLabel" Text="Steam Id:"
+                   Grid.Row="1" Grid.Column="0"
+                   VerticalOptions="Center"
+                   Style="{StaticResource labelStyle}"
+                   TextColor="#C0C0C0" />
+
+            <Entry x:Name="steamIdEntry"
+                   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"
+                   VerticalOptions="Center"
+                   Margin="5,0"
+                   BackgroundColor="DarkGray"
+                   TextColor="White" />
+
+            <Button x:Name="getAnySteamGameButton" Style="{StaticResource buttonStyle}" Text="Get Any Steam Game"
+                    Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5"
+                    BorderWidth="1"
+                    BorderColor="Black"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    Clicked="GetAnySteamGameBtn_Clicked" />
+
+            <Button x:Name="getPlayedSteamGamesButton" Style="{StaticResource buttonStyle}" Text="Get Played Steam Game"
+                    Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5"
+                    BorderWidth="1"
+                    BorderColor="Black"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    Clicked="GetPlayedSteamGamesBtn_Clicked" />
+
+            <Button x:Name="getNewSteamGamesButton" Style="{StaticResource buttonStyle}" Text="Get Unplayed Steam Game"
+                    Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"
+                    BorderWidth="1"
+                    BorderColor="Black"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    Clicked="GetUnplayedSteamGamesBtn_Clicked" />
+        </Grid>
+
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
+                <Label Text="Steam Game:" Style="{StaticResource labelStyle}" />
+                <Label Text="{Binding Title}" Style="{StaticResource fieldStyle}" />
+
+                <Label Text="Played time:" Style="{StaticResource labelStyle}" />
+                <Label Text="{Binding PlayTime}" Style="{StaticResource fieldStyle}" />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>
